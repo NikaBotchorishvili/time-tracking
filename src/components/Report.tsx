@@ -1,4 +1,11 @@
-function Report() {
+type ReportProps = {
+	type: "daily" | "weekly" | "monthly";
+	setType: React.Dispatch<
+		React.SetStateAction<"daily" | "weekly" | "monthly">
+	>;
+};
+
+function Report({ type, setType }: ReportProps) {
 	return (
 		<section className="bg-darkBlue rounded-xl md:mx-0 sm:mx-auto sm:w-[200px]  md:w-[230px] lg:w-[270px] flex flex-col justify-between pb-4 md:col-start-auto md:col-end-auto lg:row-start-1 lg:row-end-3 md:row-start-1  md:row-end-4 sm:col-start-1 sm:col-end-3">
 			<div className="p-2 bg-blue rounded-xl h-[70%] flex flex-col gap-y-8 pt-6 pl-6">
@@ -19,9 +26,30 @@ function Report() {
 				</article>
 			</div>
 			<div className="flex flex-col items-start pl-6 gap-y-3">
-				<button>Daily</button>
-				<button>Weekly</button>
-				<button>Monthly</button>
+				<button
+					className={`hover:text-[#fff] ${
+						type === "daily" && "text-[#fff]"
+					}`}
+					onClick={() => setType("daily")}
+				>
+					Daily
+				</button>
+				<button
+					className={`hover:text-[#fff] ${
+						type === "weekly" && "text-[#fff]"
+					}`}
+					onClick={() => setType("weekly")}
+				>
+					Weekly
+				</button>
+				<button
+					className={`hover:text-[#fff] ${
+						type === "monthly" && "text-[#fff]"
+					}`}
+					onClick={() => setType("monthly")}
+				>
+					Monthly
+				</button>
 			</div>
 		</section>
 	);

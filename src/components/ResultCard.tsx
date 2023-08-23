@@ -2,9 +2,10 @@ type ResultCardProps = {
     title: string;
     background: string;
     imageIcon: string
+    data: {current: number, previous: number}
 }
 
-function ResultCard({title, background, imageIcon}: ResultCardProps) {
+function ResultCard({title, background, imageIcon, data}: ResultCardProps) {
     return (
         <article className=" w-full h-full rounded-xl bg-darkBlue hover:bg-blue">
             <div className={`${background} w-full h-[25%] overflow-hidden rounded-xl`}>
@@ -17,8 +18,8 @@ function ResultCard({title, background, imageIcon}: ResultCardProps) {
                 </div>
 
                 <div className="flex flex-row items-center justify-between lg:flex-col">
-                    <h1 className="text-xl lg:text-5xl font-light">32 hrs</h1>
-                    <small>Last week - 36 hrs</small>
+                    <h1 className="text-xl lg:text-5xl font-light">{data.current} hrs</h1>
+                    <small>Last week - {data.previous} hrs</small>
                 </div>
             </div>
         </article>
